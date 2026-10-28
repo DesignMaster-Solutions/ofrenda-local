@@ -1,0 +1,4 @@
+out/
+*.16k.wav
+server.log
+__pycache__/

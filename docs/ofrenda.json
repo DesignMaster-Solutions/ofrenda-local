@@ -1,0 +1,24 @@
+{
+  "name": "Rosa Delgado",
+  "relation": "mother's mother",
+  "foods": [
+    "tamales de rajas",
+    "champurrado"
+  ],
+  "songs": [
+    "Cielito Lindo",
+    "Pedro Infante"
+  ],
+  "places": [
+    "Oaxaca",
+    "market in Tlacolula",
+    "San Antonio"
+  ],
+  "sayings": [
+    "Con paciencia y saliva.",
+    "El elefante se comió a la hormiga.",
+    "Ve con Dios, mijo."
+  ],
+  "remembrance": "I remember the Sundays spent in the kitchen, the aroma of cinnamon filling the air as she prepared her tamales de rajas and champurrado. She loved to sing Cielito Lindo while she cooked, and I always felt so comforted by her saying, ‘Con paciencia y saliva.’ It’s a shame she moved from Oaxaca to San Antonio after living near the market in Tlacolula for so many years.",
+  "model": "ggml-org/gemma-3-4b-it-GGUF"
+}
