@@ -24,6 +24,10 @@ class GroundedTest(unittest.TestCase):
         self.assertNotIn("<script>", page)
         self.assertIn("(not mentioned)", page)
 
+    def test_keeps_three_sentences_and_drops_prompt_echo(self):
+        txt = "She cooked. She sang. She said 'Ve con Dios, mijo.' 3 warm sentences in the speaker's voice. 3 warm"
+        self.assertEqual(ofrenda.three_sentences(txt), "She cooked. She sang. She said 'Ve con Dios, mijo.'")
+
 
 if __name__ == "__main__":
     unittest.main()

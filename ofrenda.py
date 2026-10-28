@@ -36,9 +36,11 @@ SCHEMA = {
 PROMPT = """You are helping a family build an ofrenda for Día de los Muertos.
 Below is a transcript of a relative telling a story about someone who passed away.
 Extract ONLY what is said in the transcript: the person's name, how they relate to the speaker,
-their favorite foods, songs, places, and things they used to say (quote them).
+their favorite foods, songs or singers, places, and things they used to say
+(quote each saying whole, exactly as spoken, even when the transcript breaks it with periods).
 Never invent details that are not in the transcript; leave a list empty if nothing was said.
 Then write "remembrance": 3 warm sentences in the speaker's voice, using only facts from the transcript.
+No opinions or judgments about the person's choices; just remember them.
 
 Transcript:
 \"\"\"{transcript}\"\"\""""
@@ -83,9 +85,15 @@ def extract(transcript: str) -> dict:
     with urllib.request.urlopen(req, timeout=600) as r:
         data = json.load(r)
     card = json.loads(data["choices"][0]["message"]["content"])
-    card["remembrance"] = card["remembrance"].replace("*", "")
+    card["remembrance"] = three_sentences(card["remembrance"])
     card["model"] = data.get("model", "local")
     return card
+
+
+def three_sentences(text: str) -> str:
+    """Small models sometimes keep writing (or echo the prompt) until maxLength: keep the 3 sentences we asked for."""
+    sentences = re.findall(r"[^.!?]+[.!?]+[\"'”’]*", text.replace("*", ""))
+    return " ".join(x.strip() for x in sentences[:3]) or text
 
 
 def grounded(card: dict, transcript: str) -> dict:
@@ -115,7 +123,7 @@ h1{{font-size:2.3rem;margin:0;color:#ffb13b;text-align:center}}
 @keyframes flick{{from{{opacity:.55;transform:scale(.94)}}to{{opacity:1;transform:scale(1.04)}}}}
 @media (prefers-reduced-motion:reduce){{.candles span{{animation:none}}}}
 blockquote{{border-left:4px solid #e2552c;margin:24px 0;padding:6px 18px;font-style:italic}}
-.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}}
+.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}}
 section{{background:#2a1736;border:1px solid #5b2f4c;border-radius:10px;padding:14px 18px}}
 h2{{font-size:1rem;margin:0 0 6px;color:#ffb13b;text-transform:uppercase;letter-spacing:.08em}}
 ul{{margin:0;padding-left:18px}}.empty{{opacity:.5}}
@@ -126,7 +134,7 @@ details{{margin-top:28px;opacity:.85}}footer{{margin-top:28px;font-size:.8rem;op
 <blockquote>{e(card['remembrance'])}</blockquote>
 <div class=grid>
 <section><h2>Favorite foods</h2><ul>{li(card['foods'])}</ul></section>
-<section><h2>Songs</h2><ul>{li(card['songs'])}</ul></section>
+<section><h2>Songs &amp; singers</h2><ul>{li(card['songs'])}</ul></section>
 <section><h2>Places</h2><ul>{li(card['places'])}</ul></section>
 <section><h2>Things they used to say</h2><ul>{li(card['sayings'])}</ul></section>
 </div>

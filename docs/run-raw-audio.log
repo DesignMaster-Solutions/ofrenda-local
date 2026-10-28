@@ -1,0 +1,25 @@
+transcript: This is for my grandmother. Rosa Delgado She was my mother's mother. And she passed away three years ago. Every Sunday she made tamales de rojas and a big pot of champurado. And she would never let anyone help with the masa. She loved to sing Cielito Lindo while she cooked. And on the radio she always played Pedro in Fonte. She grew up in Oaxaca. Near the market in Tlacolula. And later she lived 40 years in San Antonio. Whenever we complained. She used to say. Con paciencia y saliva. El elefante se comió a la hormiga. And when we left her house she always said. Ve con Dios. Mi hijo. I miss her hands. And her kitchen that always smelled like cinnamon.
+{
+  "name": "Rosa Delgado",
+  "relation": "mother's mother",
+  "foods": [
+    "tamales de rojas",
+    "a big pot of champurado"
+  ],
+  "songs": [
+    "Cielito Lindo",
+    "Pedro in Fonte"
+  ],
+  "places": [
+    "Oaxaca",
+    "market in Tlacolula",
+    "San Antonio"
+  ],
+  "sayings": [
+    "Con paciencia y saliva",
+    "El elefante se comió a la hormiga",
+    "Ve con Dios. Mi hijo."
+  ],
+  "remembrance": "Rosa Delgado grew up in Oaxaca, near the market in Tlacolula, and later lived for 40 years in San Antonio. Every Sunday, she made tamales de rojas and a big pot of champurado, and she always played Pedro in Fonte on the radio. She always said, ‘Ve con Dios.",
+  "model": "ggml-org/gemma-3-4b-it-GGUF"
+}
