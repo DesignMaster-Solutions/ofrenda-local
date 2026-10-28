@@ -1,5 +1,5 @@
 ---
-title: Ofrenda Local: my grandmother's sayings survived the transcript only after I stopped trusting one language per file
+title: "Ofrenda Local: an offline ofrenda builder, and why a grandmother's sayings need one language per phrase"
 published: true
 tags: devchallenge, hf26challenge, ai, opensource
 cover_image: https://raw.githubusercontent.com/DesignMaster-Solutions/ofrenda-local/main/docs/cover.png
