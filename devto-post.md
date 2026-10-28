@@ -48,6 +48,8 @@ The fix: run ffmpeg's `silencedetect` to find pauses, cut the audio there, and t
 - every food, song, place and saying must share words with the transcript or it is dropped;
 - if the card's name is not in the story, the run fails.
 
+The same rule shaped the remembrance prompt. An early card ended with "It's a shame she moved from Oaxaca to San Antonio". Nobody said that either, so the prompt now asks for no opinions, and the code keeps only the three sentences it asked for, because a small model under a length constraint sometimes keeps going and starts echoing the prompt.
+
 There are unit tests for the grounding filter and the HTML escaping, and I watched them fail with the filter disabled before trusting them.
 
 Whisper still hears "tamales de rojas" instead of "rajas" and "Pedro in Fonte" instead of Pedro Infante. I did not try to make the model guess those. The transcript is saved next to the card, a family member fixes the four words, and `python3 ofrenda.py story.m4a -t out/transcript.txt` rebuilds the card from the corrected text. The family corrects, the model doesn't guess.
